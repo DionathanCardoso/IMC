@@ -1,5 +1,4 @@
-
-
+const calcular = document.getElementById("calcular");
 function IMC() {
     let pessoa = {
         nome: document.getElementById("nome").value,
@@ -11,7 +10,7 @@ function IMC() {
         alert("Por favor preenche os campos abaixo!")
     } else {
         let { nome, peso, altura } = pessoa;
-        let resultado = peso / (altura * altura);
+        let resultado = (peso / (altura * altura)).toFixed(1);
         let valor;
         if (resultado >= 43) {
             valor = 1;
@@ -47,6 +46,5 @@ function IMC() {
                 pessoa.result.innerHTML = `${nome}, algo deu errado!`;
         }
     }
-
-
 }
+calcular.addEventListener('click', IMC);
