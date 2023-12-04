@@ -1,4 +1,6 @@
 const calcular = document.getElementById("calcular");
+calcular.addEventListener('click', IMC);
+
 function IMC() {
     let pessoa = {
         nome: document.getElementById("nome").value,
@@ -10,15 +12,16 @@ function IMC() {
         alert("Por favor preenche os campos abaixo!")
     } else {
         let { nome, peso, altura } = pessoa;
-        let resultado = (peso / (altura * altura)).toFixed(1);
+        let resultado = (peso / (altura * altura)).toFixed(2);
         let valor;
+        console.log(resultado)
         if (resultado >= 43) {
             valor = 1;
         } else if (resultado >= 30 && resultado <= 39.9) {
             valor = 2;
-        } else if (resultado >= 25 && resultado <= 29.9) {
+        } else if (resultado >= 25 && resultado < 30) {
             valor = 3;
-        } else if (resultado >= 20 && resultado <= 24.9) {
+        } else if (resultado >= 20 && resultado < 25) {
             valor = 4;
         } else if (resultado < 20) {
             valor = 5;
@@ -43,8 +46,7 @@ function IMC() {
                 pessoa.result.innerHTML = `${nome} o seu resultado é ${resultado} e você esta com obesidade moderada.`;
                 break;
             default:
-                pessoa.result.innerHTML = `${nome}, algo deu errado!`;
+                pessoa.result.innerHTML = `${nome}, algo deu errado verifica o campo que voçê digitou!`;
         }
     }
 }
-calcular.addEventListener('click', IMC);
